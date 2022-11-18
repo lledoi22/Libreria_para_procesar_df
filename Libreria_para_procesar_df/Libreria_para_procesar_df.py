@@ -1,53 +1,59 @@
 # -*- coding: utf-8 -*-
-"""Main module template with example functions."""
+
+import pandas as pd 
+import numpy as np
+from typing import Sequence, Dict, Optional, Tuple
 
 
-def sum_numbers(number_list):
-    """Example function. Sums a list of numbers using a for loop.
-
-    Parameters
-    ----------
-    number_list : list
-        List of ints or floats
-
-    Returns
-    -------
-    int or float
-        Sum of list
-
-    Notes
-    -----
-    This is NOT good Python, just an example function for tests.
-    """
-
-    sum_val = 0
-    for n in number_list:
-        sum_val += n
-
-    return sum_val
+df = pd.read_csv('amazonFire.csv',encoding='ISO-8859-1')
+nombres = df.columns.values.tolist()
 
 
-def max_number(number_list):
-    """Example function. Finds max of list of numbers using a for loop.
 
-    Parameters
-    ----------
-    number_list : list
-        List of ints or floats
+def fillNan(df: pd.DataFrame, column_list: Sequence[str] ) -> pd.DataFrame:
+  
 
-    Returns
-    -------
-    int or float
-        Sum of list
 
-    Notes
-    -----
-    Also not good Python.
-    """
+tipos
 
-    cur_max = number_list[0]
-    for n in number_list[1:]:
-        if n > cur_max:
-            cur_max = n
+df_pluviosidad = pd.DataFrame(df['state'].unique()[:5],columns=['state'])
+df_pluviosidad
 
-    return cur_max
+
+df_pluviosidad = pd.DataFrame(df['state'].unique()[:5],columns=['state'])
+df_pluviosidad['pluviosidad'] = np.random.normal(1000,200,len(df_pluviosidad))
+df_pluviosidad
+
+
+df_prueba= pd.DataFrame(df['state'].unique()[:5],columns=['state'])
+df_prueba
+
+
+df_prueba = pd.DataFrame(df['state'].unique()[:5],columns=['state'])
+df_prueba['prueba'] = np.random.normal(100,20,len(df_prueba))
+df_prueba
+
+
+
+
+df.shape
+
+df_left = pd.merge(df,df_pluviosidad,on='state',how='left')
+df_left = pd.merge(df_left,df_prueba,on='state',how='left')
+
+
+tipos = df_left.isnull()
+tipos
+
+x = df_left.columns[df_left.isnull().any()]
+x
+
+
+
+def alvaro(df):
+    
+    y=df.columns[df.isnull().any()]
+    return y
+
+q = alvaro(df_left)
+
